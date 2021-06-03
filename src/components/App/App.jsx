@@ -1,8 +1,6 @@
 import React from "react"
 import { HashRouter as Router, Route, Redirect, Switch } from "react-router-dom"
 
-import ProtectedRoute from "../ProtectedRoute/ProtectedRoute"
-import Login from "../Login/Login"
 import Home from "../Home/Home"
 
 function App() {
