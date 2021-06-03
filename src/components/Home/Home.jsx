@@ -4,6 +4,8 @@ import { makeStyles } from '@material-ui/core'
 import Button from '@material-ui/core/Button'
 import { useHistory } from 'react-router-dom'
 
+import IncomeForm from '../IncomeForm/IncomeForm'
+
 
 const Home = () => {
 
@@ -24,6 +26,7 @@ const Home = () => {
         <div>
             <h1>HOME COMPONENT</h1>
             <Button onClick={handleOpenIncomeForm}>Add Income</Button>
+            <IncomeForm />
             
         </div>
     )
