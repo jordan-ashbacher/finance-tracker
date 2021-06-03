@@ -1,21 +1,23 @@
 const express = require('express')
-const bodyParser = require('body-parser')
+const mongoose = require('mongoose')
+require('dotenv').config()
+
+const db = encodeURIComponent(process.env.MONGO_DB_URI)
+
+try {
+    mongoose.connect(db, { useNewUrlParser: true, useUnifiedTopology: true },
+        () => console.log("Mongoose is connected"))
+} catch(err) {
+    console.log('cannot connect to server', err)
+}
+
 
 const app = express()
 app.use(express.json())
 app.use(express.urlencoded({ extended: true }))
 
-//Route imports
-const authRoutes = require('./routes/auth-routes')
+const port = process.env.PORT || 5000
 
-const sessionMiddleware = require('./modules/session-middleware')
-
-//Routes
-app.use('/auth', authRoutes)
-
-
-const PORT = process.env.PORT || 5000
-
-app.listen(PORT, () => {
-    console.log(`listening on port: ${PORT}`)
+app.listen(port, () => {
+    console.log(`listening on port: ${port}`)
 })
