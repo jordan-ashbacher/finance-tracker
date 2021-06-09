@@ -5,21 +5,21 @@ import { ThemeProvider, createMuiTheme } from "@material-ui/core/styles"
 import './App.css'
 import Home from "../Home/Home"
 
-const theme = createMuiTheme({
-  palette: {
-    background: {
-      primary: '#2a2a2a'
-    },
-    color: {
-      primary: '#fff'
-    }
-  },
-})
+// const theme = createMuiTheme({
+//   palette: {
+//     background: {
+//       primary: '#2a2a2a'
+//     },
+//     color: {
+//       primary: '#fff'
+//     }
+//   },
+// })
 
 
 function App() {
     return (
-      <ThemeProvider theme={theme}>
+      
         <Router>
             <div>
                 <Redirect exact from="/" to="/home" />
@@ -30,7 +30,7 @@ function App() {
                 </Switch>
             </div>
         </Router>
-      </ThemeProvider>
+      
     )
 }
 

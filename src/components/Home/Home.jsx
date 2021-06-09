@@ -25,7 +25,7 @@ const Home = () => {
     return(
         <div>
             <h1>HOME COMPONENT</h1>
-            <Button onClick={handleOpenIncomeForm}>Add Income</Button>
+            <Button onClick={handleOpenIncomeForm} variant="contained" >Add Income</Button>
             <IncomeForm />
             
         </div>
