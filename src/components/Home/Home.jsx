@@ -25,8 +25,16 @@ const Home = () => {
     return(
         <div>
             <h1>HOME COMPONENT</h1>
-            <Button onClick={handleOpenIncomeForm} variant="contained" >Add Income</Button>
-            <IncomeForm />
+            {openIncomeForm ? (
+                <>
+                <IncomeForm />
+                <Button onClick={handleCloseIncomeForm} variant="contained" color="secondary">Cancel</Button>
+                </>
+            ) : (
+                <Button onClick={handleOpenIncomeForm} variant="contained" >Add Income</Button>
+            )}
+            
+            
             
         </div>
     )
