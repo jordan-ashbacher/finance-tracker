@@ -24,6 +24,7 @@ const IncomeForm = () => {
         amount: '',
         description: '',
         recurring: '',
+        frequency: '',
     })
 
     const handleFormChange = (e) => {
@@ -38,7 +39,8 @@ const IncomeForm = () => {
         setNewIncome({
             amount: '',
             description: '',
-            recurring: '',
+            recurring: false,
+            frequency: '',
         })
     }
 
@@ -59,19 +61,54 @@ const IncomeForm = () => {
                     value={newIncome.description}
                     onChange={handleFormChange}
                 />
-                <FormControl className={classes.formControl}>
+                {newIncome.recurring ? (
+                    <>
+                    <FormControl className={classes.formControl}>
                     <InputLabel id="recurring-select=label">Recurring?</InputLabel>
                         <Select 
-                            labelId="recurring-select=label"
+                            labelId="recurring-select-label"
                             id="recurring-select"
                             name="recurring"
                             value={newIncome.recurring}
                             onChange={handleFormChange}
                         >
-                            <MenuItem value={'Yes'}>Yes</MenuItem>
-                            <MenuItem value={'No'}>No</MenuItem>
+                            <MenuItem value={true}>Yes</MenuItem>
+                            <MenuItem value={false}>No</MenuItem>
                         </Select>
                 </FormControl>
+                <FormControl className={classes.formControl}>
+                    <InputLabel id="frequency-select-label">How Often?</InputLabel>
+                        <Select 
+                            labelId="frequency-select=label"
+                            id="frequency-select"
+                            name="frequency"
+                            value={newIncome.frequency}
+                            onChange={handleFormChange}
+                        >
+                            <MenuItem value={'Yearly'}>Yearly</MenuItem>
+                            <MenuItem value={'Monthly'}>Monthly</MenuItem>
+                            <MenuItem value={'Biweekly'}>Biweekly</MenuItem>
+                            <MenuItem value={'Weekly'}>Weekly</MenuItem>
+                        </Select>
+                </FormControl> 
+                </> 
+                ) : (
+                    <FormControl className={classes.formControl}>
+                    <InputLabel id="recurring-select=label">Recurring?</InputLabel>
+                        <Select 
+                            labelId="recurring-select-label"
+                            id="recurring-select"
+                            name="recurring"
+                            value={newIncome.recurring}
+                            onChange={handleFormChange}
+                        >
+                            <MenuItem value={true}>Yes</MenuItem>
+                            <MenuItem value={false}>No</MenuItem>
+                        </Select>
+                </FormControl>
+                )}
+                
+               
                 <Button type="submit" variant="contained" color="primary">Add Income</Button>
             </form>
         </div>
