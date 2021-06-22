@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react'
 import { useHistory } from 'react-router-dom'
+import { useDispatch } from 'react-redux'
 import { makeStyles } from '@material-ui/core'
 import Select from '@material-ui/core/Select'
 import MenuItem from '@material-ui/core/MenuItem'
@@ -19,6 +20,7 @@ const IncomeForm = () => {
 
     const history = useHistory()
     const classes = useStyles()
+    const dispatch = useDispatch()
 
     const [newIncome, setNewIncome] = useState({
         amount: '',
@@ -36,6 +38,7 @@ const IncomeForm = () => {
     const submitIncomeForm = (e) => {
         e.preventDefault()
         console.log(newIncome)
+        dispatch({ type: 'ADD_INCOME', payload: newIncome})
         setNewIncome({
             amount: '',
             description: '',
@@ -107,8 +110,6 @@ const IncomeForm = () => {
                         </Select>
                 </FormControl>
                 )}
-                
-               
                 <Button type="submit" variant="contained" color="primary">Add Income</Button>
             </form>
         </div>
